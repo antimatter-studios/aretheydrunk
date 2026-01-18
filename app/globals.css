@@ -1,0 +1,358 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f5f5f5;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #ff3b9a;
+  --primary-foreground: #000000;
+  --secondary: #ffe156;
+  --secondary-foreground: #000000;
+  --muted: #e5e5e5;
+  --muted-foreground: #666666;
+  --accent: #7df9ff;
+  --accent-foreground: #000000;
+  --destructive: #ff4444;
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: #000000;
+  --input: oklch(0.922 0 0);
+  --ring: #000000;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Custom party colors */
+  --drunk: #ff3b9a;
+  --sober: #7df9ff;
+  --wasted: #ff0055;
+  --tipsy: #ffe156;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-display: "Bangers", cursive;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Neo-brutalist utilities - thick borders, hard shadows, pop-art energy */
+@layer utilities {
+  /* Adding brutal color backgrounds for neo-brutalist design */
+  .bg-brutal-pink {
+    background-color: #ff3b9a;
+  }
+
+  .bg-brutal-yellow {
+    background-color: #ffe156;
+  }
+
+  .bg-brutal-teal {
+    background-color: #7df9ff;
+  }
+
+  .bg-brutal-green {
+    background-color: #00ff88;
+  }
+
+  .bg-brutal-red {
+    background-color: #ff4444;
+  }
+
+  .bg-brutal-cream {
+    background-color: #fff9e6;
+  }
+
+  .bg-brutal-orange {
+    background-color: #ff8800;
+  }
+
+  .bg-brutal-purple {
+    background-color: #a855f7;
+  }
+
+  .bg-drunk {
+    background-color: var(--drunk);
+  }
+
+  .bg-sober {
+    background-color: var(--sober);
+  }
+
+  .text-drunk {
+    color: var(--drunk);
+  }
+
+  .text-sober {
+    color: var(--sober);
+  }
+
+  .brutal-border {
+    border: 4px solid #000;
+  }
+
+  .brutal-border-thick {
+    border: 6px solid #000;
+  }
+
+  .brutal-shadow {
+    box-shadow: 8px 8px 0 #000;
+  }
+
+  .brutal-shadow-sm {
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  .brutal-shadow-lg {
+    box-shadow: 12px 12px 0 #000;
+  }
+
+  .brutal-hover {
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .brutal-hover:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 #000;
+  }
+
+  .brutal-hover:active {
+    transform: translate(0, 0);
+    box-shadow: 4px 4px 0 #000;
+  }
+
+  /* Pop-art text with thick outline effect */
+  .text-brutal {
+    color: #000;
+    text-shadow: 4px 4px 0 #ffe156, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+
+  .text-brutal-white {
+    color: #fff;
+    text-shadow: 4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+
+  .text-brutal-pink {
+    color: #ff3b9a;
+    text-shadow: 4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+  }
+
+  /* Radial sunburst background like MrBeast */
+  .sunburst {
+    background: repeating-conic-gradient(from 0deg, #ff3b9a 0deg 10deg, #ff6bb3 10deg 20deg);
+  }
+
+  .sunburst-yellow {
+    background: repeating-conic-gradient(from 0deg, #ffe156 0deg 10deg, #fff3a3 10deg 20deg);
+  }
+
+  .sunburst-blue {
+    background: repeating-conic-gradient(from 0deg, #7df9ff 0deg 10deg, #b8fcff 10deg 20deg);
+  }
+
+  /* Add more sunburst color variations */
+  .sunburst-green {
+    background: repeating-conic-gradient(from 0deg, #00ff88 0deg 10deg, #66ffb3 10deg 20deg);
+  }
+
+  .sunburst-orange {
+    background: repeating-conic-gradient(from 0deg, #ff8800 0deg 10deg, #ffaa55 10deg 20deg);
+  }
+
+  .sunburst-purple {
+    background: repeating-conic-gradient(from 0deg, #a855f7 0deg 10deg, #c084fc 10deg 20deg);
+  }
+
+  /* Halftone pattern overlay for pop-art feel */
+  .halftone {
+    position: relative;
+  }
+
+  .halftone::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    background-size: 8px 8px;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  /* Tilted elements for energy */
+  .tilt-left {
+    transform: rotate(-2deg);
+  }
+
+  .tilt-right {
+    transform: rotate(2deg);
+  }
+
+  .tilt-wild {
+    transform: rotate(-5deg);
+  }
+
+  /* Pixel/8-bit border effect */
+  .pixel-border {
+    border: 4px solid #000;
+    border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='2' height='2' fill='%23000'/%3E%3Crect x='4' width='2' height='2' fill='%23000'/%3E%3Crect y='4' width='2' height='2' fill='%23000'/%3E%3Crect x='4' y='4' width='2' height='2' fill='%23000'/%3E%3C/svg%3E")
+      2;
+  }
+
+  /* Animated wiggle for fun */
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .wiggle {
+    animation: wiggle 0.3s ease-in-out;
+  }
+
+  .wiggle-hover:hover {
+    animation: wiggle 0.3s ease-in-out infinite;
+  }
+
+  /* Sticker/badge effect */
+  .sticker {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #ffe156;
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0 #000;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  /* Comic speech bubble */
+  .speech-bubble {
+    position: relative;
+    background: #fff;
+    border: 4px solid #000;
+    padding: 1rem;
+  }
+
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #000;
+  }
+
+  .speech-bubble::before {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 34px;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 16px solid #fff;
+    z-index: 1;
+  }
+}
