@@ -1,5 +1,7 @@
 # Are They Drunk?
 
+Website: https://www.aretheydrunk.com
+
 A Supabase-backed Next.js app for hosting “party” sessions where teams add people, vote on their drunk level, and manage party visibility. Teams use capability-based auth (team_admin/team_member) and RLS to protect data. The repo includes a party manager UI, public party view, invites, team dashboards, and a shareable link system.
 
 ## Goals
