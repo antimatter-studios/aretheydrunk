@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { BrutalButton } from "@/components/brutal-button"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
+import { LogoutButton } from "@/components/logout-button"
 
 async function getUser() {
   const supabase = await getSupabaseServerClient()
@@ -35,6 +36,7 @@ export async function Header() {
                   START A PARTY
                 </BrutalButton>
               </Link>
+              <LogoutButton />
             </>
           ) : (
             <>

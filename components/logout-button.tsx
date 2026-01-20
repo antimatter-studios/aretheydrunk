@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { createBrowserClient } from "@supabase/ssr"
+import { BrutalButton } from "@/components/brutal-button"
 
 export function LogoutButton() {
   const router = useRouter()
@@ -18,11 +19,8 @@ export function LogoutButton() {
   }
 
   return (
-    <button
-      onClick={handleLogout}
-      className="bg-brutal-red text-black px-8 py-4 text-xl font-black border-6 border-black shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
-    >
+    <BrutalButton onClick={handleLogout} variant="danger" size="sm">
       LOGOUT
-    </button>
+    </BrutalButton>
   )
 }

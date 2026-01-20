@@ -2,7 +2,7 @@ import { type ButtonHTMLAttributes, forwardRef } from "react"
 import { cn } from "@/lib/utils"
 
 interface BrutalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "accent" | "drunk" | "sober" | "outline"
+  variant?: "primary" | "secondary" | "accent" | "drunk" | "sober" | "outline" | "danger"
   size?: "sm" | "md" | "lg"
 }
 
@@ -13,6 +13,7 @@ const variantStyles = {
   drunk: "bg-drunk text-foreground",
   sober: "bg-sober text-foreground",
   outline: "bg-card text-foreground",
+  danger: "bg-brutal-red text-black",
 }
 
 const sizeStyles = {

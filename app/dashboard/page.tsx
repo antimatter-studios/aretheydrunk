@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 import Link from "next/link"
 import { BrutalCard } from "@/components/brutal-card"
 import { Header } from "@/components/header"
-import { LogoutButton } from "@/components/logout-button"
+import { hasCapability } from "@/lib/authz"
 
 export default async function DashboardPage() {
   const supabase = await createServerComponentClient()
@@ -25,6 +25,8 @@ export default async function DashboardPage() {
     console.error("[dashboard] user fetch failed or missing", userError)
     redirect("/auth/login")
   }
+
+  const isSuperAdmin = await hasCapability({ userId: dbUser.id, name: "super_admin" })
 
   const { data: memberships } = await supabase
     .from("team_memberships")
@@ -136,7 +138,7 @@ export default async function DashboardPage() {
           ) : null}
 
           {/* User settings and logout */}
-          <div className="mt-12 flex flex-col items-center gap-4">
+          <div className="mt-12 flex flex-row flex-wrap items-center justify-center gap-4">
             <Link href="/dashboard/settings">
               <BrutalCard className="inline-block hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer bg-white">
                 <div className="px-8 py-6 flex items-center gap-4">
@@ -145,8 +147,16 @@ export default async function DashboardPage() {
                 </div>
               </BrutalCard>
             </Link>
-            
-            <LogoutButton />
+            {isSuperAdmin ? (
+              <Link href="/superadmin">
+                <BrutalCard className="inline-block hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer bg-white">
+                  <div className="px-8 py-6 flex items-center gap-4">
+                    <span className="text-4xl">🛡️</span>
+                    <span className="font-display text-2xl font-black text-black">SUPERADMIN</span>
+                  </div>
+                </BrutalCard>
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>

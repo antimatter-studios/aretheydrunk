@@ -1,3 +1,4 @@
+import "server-only"
 import { getAdminClient } from "./supabase/admin"
 
 export type ScopeType = "team" | null
@@ -47,9 +48,21 @@ export async function hasCapability(options: {
     .select("id")
     .eq("user_id", userId)
     .eq("capability_id", capabilityId)
-    .eq("scope_type", scopeType)
-    .eq("scope_id", scopeId)
-    .limit(1)
+
+  // Handle nullable scope columns correctly
+  if (scopeType === null) {
+    query.is("scope_type", null)
+  } else {
+    query.eq("scope_type", scopeType)
+  }
+
+  if (scopeId === null) {
+    query.is("scope_id", null)
+  } else {
+    query.eq("scope_id", scopeId)
+  }
+
+  query.limit(1)
   const { data, error } = await query
   if (error) {
     console.error("[authz] hasCapability error", error)
