@@ -8,20 +8,14 @@ interface DrunkMeterProps {
 export function DrunkMeter({ percentage, level }: DrunkMeterProps) {
   return (
     <div className="mb-8">
-      <div className="flex justify-between font-[family-name:var(--font-bangers)] text-xl tracking-wide mb-3">
+      <div className="flex justify-between font-(family-name:--font-bangers) text-xl tracking-wide mb-3">
         <span className="text-sober">SOBER</span>
         <span className="brutal-border bg-secondary px-3 py-1 text-2xl">{percentage}%</span>
         <span className="text-drunk">WASTED</span>
       </div>
       <div className="h-12 bg-card brutal-border-thick overflow-hidden relative">
         {/* Halftone overlay */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)",
-            backgroundSize: "6px 6px",
-          }}
-        />
+        <div className="absolute inset-0 opacity-20 halftone-overlay-6" />
         {/* Fill bar */}
         <div
           className="h-full transition-all duration-500 relative"
@@ -31,13 +25,7 @@ export function DrunkMeter({ percentage, level }: DrunkMeterProps) {
           }}
         >
           {/* Animated stripes */}
-          <div
-            className="absolute inset-0 opacity-30"
-            style={{
-              background:
-                "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px)",
-            }}
-          />
+          <div className="absolute inset-0 opacity-30 stripes-45" />
         </div>
       </div>
       {/* Markers */}

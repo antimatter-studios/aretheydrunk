@@ -47,23 +47,9 @@ export default async function TeamInvitePage({ params }: { params: Promise<{ slu
     <>
       <Header />
       <div className="min-h-screen p-6">
-        <div
-          className="fixed inset-0 opacity-30 pointer-events-none"
-          style={{
-            background: `repeating-conic-gradient(from 0deg at 50% 50%, 
-              #fbbf24 0deg 10deg, 
-              #f472b6 10deg 20deg, 
-              #60a5fa 20deg 30deg)`,
-          }}
-        />
+        <div className="fixed inset-0 opacity-30 pointer-events-none sunburst-triad" />
 
-        <div
-          className="fixed inset-0 opacity-20 pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(circle, black 1px, transparent 1px)`,
-            backgroundSize: "20px 20px",
-          }}
-        />
+        <div className="fixed inset-0 opacity-20 pointer-events-none halftone-overlay-20" />
 
         <div className="relative max-w-4xl mx-auto">
           <div className="mb-8">
@@ -75,12 +61,9 @@ export default async function TeamInvitePage({ params }: { params: Promise<{ slu
             </a>
           </div>
 
-          <div className="bg-white border-6 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 -rotate-1">
+          <div className="bg-white border-6 border-black brutal-shadow p-8 -rotate-1">
             <div className="rotate-1">
-              <h1
-                className="font-display text-6xl font-black text-black mb-2"
-                style={{ textShadow: "4px 4px 0px #fbbf24" }}
-              >
+              <h1 className="font-display text-6xl font-black text-black mb-2 text-outline-yellow">
                 INVITE PEOPLE
               </h1>
               <p className="text-xl font-bold mb-8">TO {team.name.toUpperCase()}</p>

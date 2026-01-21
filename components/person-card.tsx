@@ -33,7 +33,7 @@ export function PersonCard({ person, level, percentage, partySlug, tilt = "none"
   const displayName = getDisplayName(person.name)
 
   return (
-    <Link href={`/party/${partySlug}/person/${person.id}`}>
+    <Link href={`/party/${partySlug}/person/${person.id}`} className="no-underline hover:no-underline">
       <BrutalCard tilt={tilt} className="bg-card brutal-hover cursor-pointer group">
         {/* Photo/Emoji with sunburst background */}
         <div className="w-full aspect-square brutal-border-thick mb-4 overflow-hidden relative">
@@ -45,13 +45,7 @@ export function PersonCard({ person, level, percentage, partySlug, tilt = "none"
             }}
           />
           {/* Halftone overlay */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)",
-              backgroundSize: "8px 8px",
-            }}
-          />
+          <div className="absolute inset-0 opacity-20 halftone-overlay-8" />
           {/* Content */}
           <div className="absolute inset-0 flex items-center justify-center">
             {person.photo_url ? (
@@ -68,7 +62,7 @@ export function PersonCard({ person, level, percentage, partySlug, tilt = "none"
 
         {/* Name with pop-art text */}
         <h3
-          className="font-[family-name:var(--font-bangers)] text-2xl mb-3 tracking-wide text-brutal leading-tight truncate"
+          className="font-(family-name:--font-bangers) text-2xl mb-3 tracking-wide text-black leading-tight truncate no-underline"
           title={person.name}
         >
           IS {displayName.toUpperCase()} DRUNK?
@@ -80,7 +74,7 @@ export function PersonCard({ person, level, percentage, partySlug, tilt = "none"
           style={{ backgroundColor: level.color }}
         >
           <span className="text-xl mr-2">{level.emoji}</span>
-          <span className="font-[family-name:var(--font-bangers)] text-lg tracking-wide">{level.name}</span>
+          <span className="font-(family-name:--font-bangers) text-lg tracking-wide">{level.name}</span>
         </div>
 
         {/* Stats bar */}

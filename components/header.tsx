@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { BrutalButton } from "@/components/brutal-button"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
-import { LogoutButton } from "@/components/logout-button"
+import { HeaderMenu } from "@/components/header-menu"
+import { SiteTitle } from "@/components/site-title"
 
 async function getUser() {
   const supabase = await getSupabaseServerClient()
@@ -16,42 +16,12 @@ export async function Header() {
 
   return (
     <header className="brutal-border-thick border-t-0 border-x-0 bg-secondary halftone p-4 relative z-50">
-      <div className="container mx-auto flex items-center justify-between relative z-10">
-        <Link
-          href="/"
-          className="font-[family-name:var(--font-bangers)] text-2xl md:text-4xl tracking-wider text-brutal"
-        >
-          ARE THEY DRUNK?
-        </Link>
-        <div className="flex items-center gap-3">
-          {user ? (
-            <>
-              <Link href="/dashboard">
-                <BrutalButton variant="accent" size="sm">
-                  DASHBOARD
-                </BrutalButton>
-              </Link>
-              <Link href="/create">
-                <BrutalButton variant="primary" size="sm">
-                  START A PARTY
-                </BrutalButton>
-              </Link>
-              <LogoutButton />
-            </>
-          ) : (
-            <>
-              <Link href="/auth/login">
-                <BrutalButton variant="accent" size="sm">
-                  LOGIN
-                </BrutalButton>
-              </Link>
-              <Link href="/auth/signup">
-                <BrutalButton variant="primary" size="sm">
-                  SIGN UP
-                </BrutalButton>
-              </Link>
-            </>
-          )}
+      <div className="container mx-auto relative z-10">
+        <div className="relative flex items-center justify-center md:justify-between">
+          <SiteTitle />
+          <div className="absolute right-0 md:static md:ml-auto">
+            <HeaderMenu isAuthenticated={!!user} />
+          </div>
         </div>
       </div>
     </header>

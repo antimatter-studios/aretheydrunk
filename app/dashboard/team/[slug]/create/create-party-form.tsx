@@ -32,32 +32,21 @@ export function CreatePartyForm({ slug, teamName }: { slug: string; teamName: st
 
   return (
     <BrutalCard className="bg-white p-8">
-      <h1
-        className="text-6xl font-black text-center mb-2 text-black"
-        style={{
-          fontFamily: "Bangers, cursive",
-          letterSpacing: "0.05em",
-          textShadow: "4px 4px 0 #FFD700",
-        }}
-      >
+      <h1 className="text-6xl font-black text-center mb-2 text-black font-(family-name:--font-bangers) tracking-wider">
         START A PARTY! 🎉
       </h1>
       <p className="text-center text-xl mb-8 font-bold">{"Name your party and let the voting begin!"}</p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="p-4 bg-brutal-teal/20 border-6 border-black shadow-[8px_8px_0_0_#000]">
+        <div className="p-4 bg-brutal-teal/20 border-6 border-black brutal-shadow">
           <label className="block text-sm font-bold mb-1">TEAM</label>
-          <p className="text-2xl font-black" style={{ fontFamily: "Bangers, cursive" }}>
+          <p className="text-2xl font-black font-(family-name:--font-bangers)">
             {teamName}
           </p>
         </div>
 
         <div>
-          <label
-            htmlFor="partyName"
-            className="block text-xl font-black mb-2"
-            style={{ fontFamily: "Bangers, cursive" }}
-          >
+          <label htmlFor="partyName" className="block text-xl font-black mb-2 font-(family-name:--font-bangers)">
             PARTY NAME
           </label>
           <BrutalInput
@@ -71,7 +60,7 @@ export function CreatePartyForm({ slug, teamName }: { slug: string; teamName: st
           />
         </div>
 
-        <div className="flex items-start gap-4 p-4 bg-brutal-yellow/20 border-6 border-black shadow-[8px_8px_0_0_#000]">
+        <div className="flex items-start gap-4 p-4 bg-brutal-yellow/20 border-6 border-black brutal-shadow">
           <input
             type="checkbox"
             id="isPublic"

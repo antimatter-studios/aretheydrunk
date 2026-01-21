@@ -6,6 +6,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server"
 import { calculateDrunkLevel, getDrunkPercentage } from "@/lib/drunk-levels"
 import { PersonCard } from "@/components/person-card"
 import { ShareButton } from "@/components/share-button"
+import { SiteTitle } from "@/components/site-title"
 
 async function getPartyWithAttendees(slug: string) {
   const supabase = await getSupabaseServerClient()
@@ -51,12 +52,7 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
     <main className="min-h-screen bg-background overflow-hidden">
       <header className="brutal-border-thick border-t-0 border-x-0 bg-primary halftone p-4 relative">
         <div className="container mx-auto flex items-center justify-between relative z-10">
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-bangers)] text-2xl md:text-4xl tracking-wider text-brutal-white"
-          >
-            ARE THEY DRUNK?
-          </Link>
+          <SiteTitle />
           <div className="flex gap-3">
             <Link href={`/party/${slug}/stats`}>
               <BrutalButton variant="secondary" size="sm">
@@ -79,7 +75,7 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
             <div className="tilt-wild inline-block mb-6">
               <span className="sticker text-lg">LIVE PARTY</span>
             </div>
-            <h1 className="font-[family-name:var(--font-bangers)] text-5xl md:text-7xl lg:text-8xl text-brutal mb-4 tracking-wider">
+            <h1 className="font-(family-name:--font-bangers) text-5xl md:text-7xl lg:text-8xl text-brutal mb-4 tracking-wider">
               {party.name}
             </h1>
             <p className="font-bold text-lg max-w-md mx-auto">
@@ -121,7 +117,7 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
           </div>
         ) : (
           <BrutalCard className="max-w-lg mx-auto text-center bg-secondary">
-            <p className="font-[family-name:var(--font-bangers)] text-2xl mb-4 tracking-wide">
+            <p className="font-(family-name:--font-bangers) text-2xl mb-4 tracking-wide">
               NO ONE&apos;S HERE YET!
             </p>
             <p className="font-bold text-muted-foreground mb-6">Add people to start the voting madness!</p>
@@ -135,7 +131,7 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
       <footer className="brutal-border-thick border-b-0 border-x-0 bg-accent py-10 mt-12 relative">
         <div className="absolute inset-0 sunburst-blue opacity-30" />
         <div className="container mx-auto text-center relative z-10">
-          <p className="font-[family-name:var(--font-bangers)] text-3xl mb-4 tracking-wide text-brutal">
+          <p className="font-(family-name:--font-bangers) text-3xl mb-4 tracking-wide text-black no-underline">
             SHARE THIS PARTY!
           </p>
           <ShareButton

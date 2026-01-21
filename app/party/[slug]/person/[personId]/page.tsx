@@ -5,6 +5,7 @@ import { calculateDrunkLevel, getDrunkPercentage, DRUNK_LEVELS } from "@/lib/dru
 import { VotingButtons } from "@/components/voting-buttons"
 import { DrunkMeter } from "@/components/drunk-meter"
 import { BrutalButton } from "@/components/brutal-button"
+import { SiteTitle } from "@/components/site-title"
 
 async function getAttendeeWithParty(attendeeId: string, partySlug: string) {
   const supabase = await getSupabaseServerClient()
@@ -63,12 +64,7 @@ export default async function PersonVotePage({
         style={{ backgroundColor: level.color }}
       >
         <div className="container mx-auto flex items-center justify-between relative z-10">
-          <Link
-            href={`/party/${slug}`}
-            className="font-[family-name:var(--font-bangers)] text-2xl md:text-4xl tracking-wider text-brutal"
-          >
-            {party.name}
-          </Link>
+          <SiteTitle />
           <Link href={`/party/${slug}`}>
             <BrutalButton variant="secondary" size="sm">
               BACK TO PARTY
@@ -91,17 +87,17 @@ export default async function PersonVotePage({
           <div className="max-w-xl mx-auto text-center">
             {/* The Big Question */}
             <h1 className="mb-8 leading-tight">
-              <span className="font-[family-name:var(--font-bangers)] text-5xl md:text-7xl lg:text-8xl tracking-wider text-brutal-white block">
+              <span className="font-(family-name:--font-bangers) text-5xl md:text-7xl lg:text-8xl tracking-wider text-brutal-white block">
                 IS
               </span>
               <span
-                className="block font-[family-name:var(--font-bangers)] text-4xl md:text-6xl lg:text-7xl tracking-wider text-brutal-white truncate max-w-full px-2"
+                className="block font-(family-name:--font-bangers) text-4xl md:text-6xl lg:text-7xl tracking-wider text-brutal-white truncate max-w-full px-2"
                 title={displayName}
               >
                 {displayName.toUpperCase()}
               </span>
               <span
-                className="block font-[family-name:var(--font-bangers)] text-5xl md:text-7xl lg:text-8xl tracking-wider"
+                className="block font-(family-name:--font-bangers) text-5xl md:text-7xl lg:text-8xl tracking-wider"
                 style={{
                   color: level.color,
                   textShadow: "4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000",
@@ -117,13 +113,7 @@ export default async function PersonVotePage({
               style={{ backgroundColor: level.color }}
             >
               {/* Halftone overlay */}
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)",
-                  backgroundSize: "8px 8px",
-                }}
-              />
+              <div className="absolute inset-0 opacity-20 halftone-overlay-8" />
               <span className="text-8xl md:text-9xl relative z-10">{level.emoji}</span>
             </div>
 
@@ -132,7 +122,7 @@ export default async function PersonVotePage({
               className="brutal-border-thick brutal-shadow-lg inline-block px-8 py-4 mb-10"
               style={{ backgroundColor: level.color }}
             >
-              <span className="font-[family-name:var(--font-bangers)] text-3xl md:text-4xl tracking-wider">
+              <span className="font-(family-name:--font-bangers) text-3xl md:text-4xl tracking-wider">
                 {level.emoji} {level.name.toUpperCase()}
               </span>
             </div>
@@ -146,18 +136,18 @@ export default async function PersonVotePage({
             {/* Stats */}
             <div className="grid grid-cols-2 gap-6 mt-10">
               <div className="bg-white brutal-border-thick brutal-shadow p-6">
-                <div className="font-[family-name:var(--font-bangers)] text-5xl tracking-wide text-drunk">{drunkVotes}</div>
+                <div className="font-(family-name:--font-bangers) text-5xl tracking-wide text-drunk">{drunkVotes}</div>
                 <div className="font-bold text-sm uppercase mt-2 text-black">DRUNK VOTES</div>
               </div>
               <div className="bg-white brutal-border-thick brutal-shadow p-6">
-                <div className="font-[family-name:var(--font-bangers)] text-5xl tracking-wide text-sober">{soberVotes}</div>
+                <div className="font-(family-name:--font-bangers) text-5xl tracking-wide text-sober">{soberVotes}</div>
                 <div className="font-bold text-sm uppercase mt-2 text-black">SOBER VOTES</div>
               </div>
             </div>
 
             {/* Hourly Stats */}
             <div className="bg-white brutal-border-thick brutal-shadow-sm p-6 mt-6">
-              <div className="font-[family-name:var(--font-bangers)] text-xl tracking-wide mb-3 text-black">THIS HOUR</div>
+              <div className="font-(family-name:--font-bangers) text-xl tracking-wide mb-3 text-black">THIS HOUR</div>
               <div className="flex justify-center gap-8 font-bold text-black">
                 <span>
                   <span className="text-drunk text-2xl">{hourlyStats.drunk}</span> drunk
@@ -176,7 +166,7 @@ export default async function PersonVotePage({
       {/* Drunk Scale Legend */}
       <section className="brutal-border-thick border-x-0 bg-card py-8">
         <div className="container mx-auto px-4">
-          <h3 className="font-[family-name:var(--font-bangers)] text-2xl text-center mb-6 tracking-wide">
+          <h3 className="font-(family-name:--font-bangers) text-2xl text-center mb-6 tracking-wide">
             THE DRUNK SCALE
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
@@ -187,7 +177,7 @@ export default async function PersonVotePage({
                 style={{ backgroundColor: l.color }}
               >
                 <span className="text-lg">{l.emoji}</span>
-                <span className="font-[family-name:var(--font-bangers)] text-sm tracking-wide">{l.name}</span>
+                <span className="font-(family-name:--font-bangers) text-sm tracking-wide">{l.name}</span>
               </div>
             ))}
           </div>

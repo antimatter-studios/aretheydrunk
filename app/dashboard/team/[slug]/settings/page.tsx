@@ -3,6 +3,7 @@ import { redirect, notFound } from "next/navigation"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { TeamSettingsForm } from "./settings-form"
+import { hasCapability } from "@/lib/authz"
 
 export default async function TeamSettingsPage({
   params,
@@ -34,16 +35,22 @@ export default async function TeamSettingsPage({
     notFound()
   }
 
-  // Check user's membership and admin status
+  // Require active membership
   const { data: membership } = await supabase
     .from("team_memberships")
-    .select("role")
+    .select("id")
     .eq("team_id", team.id)
     .eq("user_id", dbUser.id)
     .eq("status", "active")
     .single()
 
-  if (!membership || membership.role !== "admin") {
+  if (!membership) {
+    redirect(`/dashboard/team/${slug}`)
+  }
+
+  // Capability-based admin check
+  const isAdmin = await hasCapability({ userId: dbUser.id, name: "team_admin", scopeType: "team", scopeId: team.id })
+  if (!isAdmin) {
     redirect(`/dashboard/team/${slug}`)
   }
 

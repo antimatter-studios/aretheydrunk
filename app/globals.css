@@ -126,8 +126,36 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  /* Reusable overlays to replace inline styles */
+  .sunburst-transparent {
+    background: repeating-conic-gradient(
+      from 0deg,
+      transparent 0deg 10deg,
+      rgba(255, 255, 255, 0.1) 10deg 20deg
+    );
+  }
+
+  /* Yellow/Pink/Blue sunburst used on invite page */
+  .sunburst-triad {
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      #fbbf24 0deg 10deg,
+      #f472b6 10deg 20deg,
+      #60a5fa 20deg 30deg
+    );
+  }
+
+  .halftone-overlay-10 {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  html,
+  body {
+    min-width: 375px;
   }
 }
 
@@ -156,6 +184,34 @@
 
   .bg-brutal-cream {
     background-color: #fff9e6;
+  }
+
+  /* Drunk scale legend colors */
+  .bg-scale-feeling {
+    background-color: #a8f0b0;
+  }
+  .bg-scale-drunk {
+    background-color: #ffb347;
+  }
+  .bg-scale-smashed {
+    background-color: #ff6b6b;
+  }
+  .bg-scale-holy {
+    background-color: #ff0055;
+  }
+
+  /* Leaderboard rank backgrounds */
+  .bg-rank-gold {
+    background-color: #ffe156;
+  }
+  .bg-rank-silver {
+    background-color: #c0c0c0;
+  }
+  .bg-rank-bronze {
+    background-color: #cd7f32;
+  }
+  .bg-rank-neutral {
+    background-color: #f5f5f5;
   }
 
   .bg-brutal-orange {
@@ -232,6 +288,24 @@
     text-shadow: 4px 4px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
   }
 
+  .text-outline-black {
+    text-shadow: 4px 4px 0 #000;
+  }
+  .text-outline-red {
+    text-shadow: 4px 4px 0 #ef4444, -2px -2px 0 #000;
+  }
+  .text-outline-green {
+    text-shadow: 4px 4px 0 #22c55e, -2px -2px 0 #000;
+  }
+  .text-outline-yellow {
+    text-shadow: 4px 4px 0 #fbbf24, -2px -2px 0 #000;
+  }
+
+  /* Softer brutal text shadow for improved readability */
+  .text-brutal-soft {
+    text-shadow: 2px 2px 0 #000;
+  }
+
   /* Radial sunburst background like MrBeast */
   .sunburst {
     background: repeating-conic-gradient(from 0deg, #ff3b9a 0deg 10deg, #ff6bb3 10deg 20deg);
@@ -258,6 +332,24 @@
     background: repeating-conic-gradient(from 0deg, #a855f7 0deg 10deg, #c084fc 10deg 20deg);
   }
 
+  .sunburst-red {
+    background: repeating-conic-gradient(from 0deg, #ef4444 0deg 10deg, #dc2626 10deg 20deg);
+  }
+
+  .sunburst-green {
+    background: repeating-conic-gradient(from 0deg, #22c55e 0deg 10deg, #16a34a 10deg 20deg);
+  }
+
+  /* Multi-color sunburst used on create team page */
+  .sunburst-multi {
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      #ffd700 0deg 10deg,
+      #ff69b4 10deg 20deg,
+      #00ced1 20deg 30deg
+    );
+  }
+
   /* Halftone pattern overlay for pop-art feel */
   .halftone {
     position: relative;
@@ -271,6 +363,31 @@
     background-size: 8px 8px;
     opacity: 0.1;
     pointer-events: none;
+  }
+
+  .halftone-overlay-8 {
+    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+
+  .halftone-overlay-20 {
+    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .halftone-overlay-6 {
+    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    background-size: 6px 6px;
+  }
+
+  .stripes-45 {
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.1) 10px,
+      rgba(0, 0, 0, 0.1) 20px
+    );
   }
 
   /* Tilted elements for energy */

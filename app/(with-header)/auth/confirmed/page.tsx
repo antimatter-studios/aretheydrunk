@@ -16,21 +16,12 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
   if (!confirmCode) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        <div
-          className="fixed inset-0 pointer-events-none"
-          style={{
-            background: "repeating-conic-gradient(from 0deg, #ef4444 0deg 10deg, #dc2626 10deg 20deg)",
-            opacity: 0.3,
-          }}
-        />
+        <div className="fixed inset-0 pointer-events-none sunburst-red opacity-30" />
 
         <div className="relative z-10 w-full max-w-lg">
           <BrutalCard className="p-8 text-center bg-white">
             <div className="text-8xl mb-4">X</div>
-            <h1
-              className="font-display text-4xl md:text-5xl mb-4 uppercase"
-              style={{ textShadow: "4px 4px 0px #ef4444, -2px -2px 0px #000" }}
-            >
+            <h1 className="font-display text-4xl md:text-5xl mb-4 uppercase text-outline-red">
               Invalid Link
             </h1>
             <p className="text-lg mb-8 text-black">
@@ -38,8 +29,7 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
             </p>
             <Link
               href="/auth/signup"
-              className="block bg-brutal-yellow border-4 border-black p-4 font-display text-xl uppercase text-black hover:-translate-y-1 transition-all"
-              style={{ boxShadow: "6px 6px 0px #000" }}
+              className="block bg-brutal-yellow border-4 border-black p-4 font-display text-xl uppercase text-black hover:-translate-y-1 transition-all brutal-shadow"
             >
               Sign Up Again
             </Link>
@@ -59,21 +49,12 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
   if (profileError || !userProfile) {
     return (
       <div className="min-h-screen flex items-center justify-center p-4">
-        <div
-          className="fixed inset-0 pointer-events-none"
-          style={{
-            background: "repeating-conic-gradient(from 0deg, #ef4444 0deg 10deg, #dc2626 10deg 20deg)",
-            opacity: 0.3,
-          }}
-        />
+        <div className="fixed inset-0 pointer-events-none sunburst-red opacity-30" />
 
         <div className="relative z-10 w-full max-w-lg">
           <BrutalCard className="p-8 text-center bg-white">
             <div className="text-8xl mb-4">?</div>
-            <h1
-              className="font-display text-4xl md:text-5xl mb-4 uppercase"
-              style={{ textShadow: "4px 4px 0px #ef4444, -2px -2px 0px #000" }}
-            >
+            <h1 className="font-display text-4xl md:text-5xl mb-4 uppercase text-outline-red">
               Code Not Found
             </h1>
             <p className="text-lg mb-8 text-black">
@@ -83,15 +64,13 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
             <div className="flex flex-col gap-4">
               <Link
                 href="/auth/login"
-                className="block bg-brutal-pink border-4 border-black p-4 font-display text-xl uppercase text-black hover:-translate-y-1 transition-all"
-                style={{ boxShadow: "6px 6px 0px #000" }}
+                className="block bg-brutal-pink border-4 border-black p-4 font-display text-xl uppercase text-black hover:-translate-y-1 transition-all brutal-shadow"
               >
                 Go to Login
               </Link>
               <Link
                 href="/auth/signup"
-                className="block bg-brutal-yellow border-4 border-black p-4 font-display text-xl uppercase text-black hover:-translate-y-1 transition-all"
-                style={{ boxShadow: "6px 6px 0px #000" }}
+                className="block bg-brutal-yellow border-4 border-black p-4 font-display text-xl uppercase text-black hover:-translate-y-1 transition-all brutal-shadow"
               >
                 Sign Up Again
               </Link>
@@ -114,7 +93,11 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
     .eq("user_id", userProfile.id)
     .single()
 
-  const teamData = membership?.team as { id: string; name: string } | null
+  const teamRelation = membership?.team as
+    | { id: string; name: string }
+    | { id: string; name: string }[]
+    | null
+  const teamData = Array.isArray(teamRelation) ? teamRelation[0] : teamRelation
   const teamName = teamData?.name || "Your Team"
   const role = membership?.role || "member"
   const alreadyConfirmed = !!userProfile.email_confirmed_at
@@ -123,23 +106,10 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
   return (
     <div className="min-h-screen flex items-center justify-center p-4 py-12">
       {/* Green sunburst background */}
-      <div
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          background: "repeating-conic-gradient(from 0deg, #22c55e 0deg 10deg, #16a34a 10deg 20deg)",
-          opacity: 0.3,
-        }}
-      />
+      <div className="fixed inset-0 pointer-events-none sunburst-green opacity-30" />
 
       {/* Halftone overlay */}
-      <div
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, #000 1px, transparent 1px)",
-          backgroundSize: "8px 8px",
-          opacity: 0.05,
-        }}
-      />
+      <div className="fixed inset-0 pointer-events-none halftone-overlay-8 opacity-5" />
 
       <div className="relative z-10 w-full max-w-lg">
         <BrutalCard className="p-8 text-center bg-white relative">
@@ -147,27 +117,18 @@ export default async function ConfirmedPage({ searchParams }: ConfirmedPageProps
           <div className="text-8xl mb-4">🎉</div>
 
           {/* Title */}
-          <h1
-            className="font-display text-4xl md:text-5xl mb-4 uppercase"
-            style={{ textShadow: "4px 4px 0px #22c55e, -2px -2px 0px #000" }}
-          >
+          <h1 className="font-display text-4xl md:text-5xl mb-4 uppercase text-brutal">
             {alreadyConfirmed ? "Already Confirmed!" : "Email Confirmed!"}
           </h1>
 
           {/* Team welcome banner */}
-          <div
-            className="bg-brutal-yellow border-4 border-black p-4 mb-6 -rotate-1"
-            style={{ boxShadow: "6px 6px 0px #000" }}
-          >
+          <div className="bg-brutal-yellow border-4 border-black p-4 mb-6 -rotate-1 brutal-shadow">
             <p className="font-display text-xl uppercase text-black">Welcome to</p>
             <p className="font-display text-3xl uppercase text-brutal-pink">{teamName}</p>
           </div>
 
           {/* User info card */}
-          <div
-            className="bg-gray-100 border-4 border-black p-4 mb-6 text-left"
-            style={{ boxShadow: "4px 4px 0px #000" }}
-          >
+          <div className="bg-gray-100 border-4 border-black p-4 mb-6 text-left brutal-shadow-sm">
             <div className="flex items-center gap-3 mb-2">
               <span className="text-2xl">👤</span>
               <span className="font-bold text-black">{displayName}</span>

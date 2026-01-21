@@ -1,4 +1,5 @@
 import { getSupabaseServerClient } from "@/lib/supabase/server"
+import { SiteTitle } from "@/components/site-title"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { BrutalButton } from "@/components/brutal-button"
@@ -58,12 +59,7 @@ export default async function StatsPage({ params }: { params: Promise<{ slug: st
     <main className="min-h-screen bg-background overflow-hidden">
       <header className="brutal-border-thick border-t-0 border-x-0 bg-secondary halftone p-4 relative">
         <div className="container mx-auto flex items-center justify-between relative z-10">
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-bangers)] text-2xl md:text-4xl tracking-wider text-brutal"
-          >
-            ARE THEY DRUNK?
-          </Link>
+          <SiteTitle />
           <Link href={`/party/${slug}`}>
             <BrutalButton variant="primary" size="sm">
               VIEW PARTY
@@ -167,11 +163,15 @@ export default async function StatsPage({ params }: { params: Promise<{ slug: st
                   <Link key={person.id} href={`/party/${slug}/person/${person.id}`} className="block">
                     <div className="flex items-center gap-4 brutal-border-thick bg-muted p-4 brutal-hover">
                       <div
-                        className="w-14 h-14 brutal-border-thick flex items-center justify-center font-[family-name:var(--font-bangers)] text-2xl"
-                        style={{
-                          backgroundColor:
-                            index === 0 ? "#ffe156" : index === 1 ? "#c0c0c0" : index === 2 ? "#cd7f32" : "#f5f5f5",
-                        }}
+                        className={`w-14 h-14 brutal-border-thick flex items-center justify-center font-[family-name:var(--font-bangers)] text-2xl ${
+                          index === 0
+                            ? "bg-rank-gold"
+                            : index === 1
+                            ? "bg-rank-silver"
+                            : index === 2
+                            ? "bg-rank-bronze"
+                            : "bg-rank-neutral"
+                        }`}
                       >
                         #{index + 1}
                       </div>

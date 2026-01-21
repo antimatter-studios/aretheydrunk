@@ -46,10 +46,7 @@ export default async function SuperAdminPage() {
           </Link>
         </div>
         <div className="mb-12">
-          <h1
-            className="font-display text-6xl font-black text-black mb-4"
-            style={{ textShadow: "6px 6px 0 #FFE55C" }}
-          >
+          <h1 className="font-display text-6xl font-black text-black mb-4">
             SUPERADMIN
           </h1>
           <p className="text-2xl font-bold">System management tools</p>

@@ -55,3 +55,8 @@ export async function createNewTeam(formData: FormData) {
 
   redirect(`/dashboard/team/${team.slug}`)
 }
+
+// Thin wrapper to satisfy form action typing without inline JavaScript
+export async function submitCreateTeam(formData: FormData): Promise<void> {
+  await createNewTeam(formData)
+}

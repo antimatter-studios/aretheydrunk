@@ -54,34 +54,16 @@ export default async function DashboardPage() {
       <div className="min-h-screen relative overflow-auto">
         {/* Sunburst background */}
         <div className="fixed inset-0 opacity-30 pointer-events-none">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `repeating-conic-gradient(
-                from 0deg,
-                transparent 0deg 10deg,
-                rgba(255, 255, 255, 0.1) 10deg 20deg
-              )`,
-            }}
-          />
+          <div className="absolute inset-0 sunburst-transparent" />
         </div>
 
         {/* Halftone overlay */}
-        <div
-          className="fixed inset-0 opacity-20 pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(circle, rgba(0, 0, 0, 0.15) 1px, transparent 1px)`,
-            backgroundSize: "10px 10px",
-          }}
-        />
+        <div className="fixed inset-0 opacity-20 pointer-events-none halftone-overlay-10" />
 
         <div className="relative z-10 container mx-auto px-4 py-12">
           {/* Header */}
           <div className="mb-12">
-            <h1
-              className="font-display text-6xl font-black text-black mb-4"
-              style={{ textShadow: "6px 6px 0 #FFE55C" }}
-            >
+            <h1 className="font-display text-6xl font-black text-black mb-4">
               YOUR TEAMS
             </h1>
             <p className="text-2xl font-bold">
@@ -140,8 +122,8 @@ export default async function DashboardPage() {
           {/* User settings and logout */}
           <div className="mt-12 flex flex-row flex-wrap items-center justify-center gap-4">
             <Link href="/dashboard/settings">
-              <BrutalCard className="inline-block hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer bg-white">
-                <div className="px-8 py-6 flex items-center gap-4">
+              <BrutalCard className="inline-block w-72 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer bg-white">
+                <div className="px-8 h-20 flex items-center gap-4">
                   <span className="text-4xl">⚙️</span>
                   <span className="font-display text-2xl font-black text-black">USER SETTINGS</span>
                 </div>
@@ -149,8 +131,8 @@ export default async function DashboardPage() {
             </Link>
             {isSuperAdmin ? (
               <Link href="/superadmin">
-                <BrutalCard className="inline-block hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer bg-white">
-                  <div className="px-8 py-6 flex items-center gap-4">
+                <BrutalCard className="inline-block w-72 hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer bg-white">
+                  <div className="px-8 h-20 flex items-center gap-4">
                     <span className="text-4xl">🛡️</span>
                     <span className="font-display text-2xl font-black text-black">SUPERADMIN</span>
                   </div>
