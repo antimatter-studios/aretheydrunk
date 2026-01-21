@@ -147,8 +147,9 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const ogUrl = `/party/${slug}/opengraph-image`
-  const twUrl = `/party/${slug}/twitter-image`
+  const origin = "https://aretheydrunk.com"
+  const ogUrl = `${origin}/party/${slug}/opengraph-image.png`
+  const twUrl = `${origin}/party/${slug}/twitter-image.png`
 
   return {
     openGraph: {
