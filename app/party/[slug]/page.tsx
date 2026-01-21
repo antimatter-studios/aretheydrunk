@@ -1,5 +1,6 @@
 import Link from "next/link"
 import type { Metadata } from "next"
+import { partyOpenGraph, partyTwitter, derivePartyTitleFromSlug } from "@/lib/seo/config"
 import { notFound } from "next/navigation"
 import { BrutalButton } from "@/components/brutal-button"
 import { BrutalCard } from "@/components/brutal-card"
@@ -147,21 +148,10 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const origin = "https://aretheydrunk.com"
-  const ogUrl = `${origin}/party/${slug}/opengraph-image.png`
-  const twUrl = `${origin}/party/${slug}/twitter-image.png`
+  const partyName = derivePartyTitleFromSlug(slug)
 
   return {
-    openGraph: {
-      images: [
-        { url: ogUrl, width: 1200, height: 630 },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [
-        { url: twUrl, width: 1200, height: 630 },
-      ],
-    },
+    openGraph: partyOpenGraph(slug, partyName),
+    twitter: partyTwitter(slug, partyName),
   }
 }

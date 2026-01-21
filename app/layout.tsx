@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { siteOpenGraph, siteTwitter, SITE_NAME, DEFAULT_DESCRIPTION } from "@/lib/seo/config"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Bangers } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
@@ -15,41 +16,15 @@ const bangers = Bangers({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aretheydrunk.com"),
-  title: "Are They Drunk? | The Ultimate Party Voting Game",
-  description: "Create a party, add your friends, and let the crowd decide who's had one too many!",
+  title: `${SITE_NAME} | The Ultimate Party Voting Game`,
+  description: DEFAULT_DESCRIPTION,
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
-  openGraph: {
-    title: "Are They Drunk? | The Ultimate Party Voting Game",
-    description:
-      "Create a party, add your friends, and let the crowd decide who's had one too many!",
-    url: "/",
-    siteName: "Are They Drunk?",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Are They Drunk? | The Ultimate Party Voting Game",
-    description:
-      "Create a party, add your friends, and let the crowd decide who's had one too many!",
-    images: [
-      {
-        url: "/twitter-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
+  openGraph: siteOpenGraph(),
+  twitter: siteTwitter(),
 }
 
 export default function RootLayout({
