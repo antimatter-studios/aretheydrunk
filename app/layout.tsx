@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: "Create a party, add your friends, and let the crowd decide who's had one too many!",
   icons: {
     icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
   openGraph: {
     title: "Are They Drunk? | The Ultimate Party Voting Game",
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "Are They Drunk?",
     images: [
       {
-        url: "/og.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
       },
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
       "Create a party, add your friends, and let the crowd decide who's had one too many!",
     images: [
       {
-        url: "/twitter.png",
+        url: "/twitter-image.png",
         width: 1200,
         height: 630,
       },

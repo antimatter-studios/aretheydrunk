@@ -3,13 +3,14 @@ import React from "react"
 export interface RenderProps {
   size: { width: number; height: number }
   title: string
+  subtitle?: string
   stops: [string, string, string]
   base: string
   emojiSrc?: string
   kind?: "opengraph" | "twitter"
 }
 
-export function renderSocial({ size, title, stops, base, emojiSrc }: RenderProps) {
+export function renderSocial({ size, title, subtitle, stops, base, emojiSrc }: RenderProps) {
   return (
     <div
       style={{
@@ -110,13 +111,15 @@ export function renderSocial({ size, title, stops, base, emojiSrc }: RenderProps
           textShadow:
             "4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000, 3px 3px #000, -3px -3px #000, 3px -3px #000, -3px 3px #000",
         }}>{title}</div>
-        <div style={{
-          fontSize: 36,
-          fontWeight: 700,
-          color: "#fff",
-          textShadow:
-            "3px 0 #000, -3px 0 #000, 0 3px #000, 0 -3px #000, 2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000",
-        }}>The Ultimate Party Voting Game</div>
+        {subtitle ? (
+          <div style={{
+            fontSize: 36,
+            fontWeight: 700,
+            color: "#fff",
+            textShadow:
+              "3px 0 #000, -3px 0 #000, 0 3px #000, 0 -3px #000, 2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000",
+          }}>{subtitle}</div>
+        ) : null}
       </div>
     </div>
   )
