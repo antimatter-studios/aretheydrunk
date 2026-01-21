@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Are They Drunk? — Social Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --pink-0: #ff80bf;
+        --pink-1: #ff4da6;
+        --pink-2: #ff1f8a;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 1200px;
+        height: 630px;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--pink-1);
+        position: relative;
+        font-family: 'Bangers', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial;
+      }
+      .gradient {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 45%, var(--pink-0) 0%, var(--pink-1) 55%, var(--pink-2) 100%);
+      }
+      .frame {
+        position: absolute;
+        inset: 24px;
+        border: 12px solid #000;
+        box-shadow: 16px 16px 0 #000;
+      }
+      .content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #000;
+        padding: 48px;
+      }
+      .emoji { font-size: 220px; line-height: 1; margin-bottom: 16px; }
+      .title { font-size: 110px; letter-spacing: 2px; font-weight: 900; }
+      .subtitle { font-size: 42px; margin-top: 8px; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <div class="gradient"></div>
+    <div class="frame"></div>
+    <div class="content">
+      <div class="emoji">🥴</div>
+      <div class="title">ARE THEY DRUNK?</div>
+      <div class="subtitle">The Ultimate Party Voting Game</div>
+    </div>
+  </body>
+</html>

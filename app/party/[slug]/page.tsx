@@ -1,4 +1,5 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { BrutalButton } from "@/components/brutal-button"
 import { BrutalCard } from "@/components/brutal-card"
@@ -142,4 +143,24 @@ export default async function PartyPage({ params }: { params: Promise<{ slug: st
       </footer>
     </main>
   )
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const ogUrl = `/party/${slug}/opengraph-image`
+  const twUrl = `/party/${slug}/twitter-image`
+
+  return {
+    openGraph: {
+      images: [
+        { url: ogUrl, width: 1200, height: 630 },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [
+        { url: twUrl, width: 1200, height: 630 },
+      ],
+    },
+  }
 }

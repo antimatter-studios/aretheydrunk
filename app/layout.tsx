@@ -14,25 +14,39 @@ const bangers = Bangers({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aretheydrunk.com"),
   title: "Are They Drunk? | The Ultimate Party Voting Game",
   description: "Create a party, add your friends, and let the crowd decide who's had one too many!",
-  generator: "v0.app",
   icons: {
-    icon: [
+    icon: "/icon.svg",
+  },
+  openGraph: {
+    title: "Are They Drunk? | The Ultimate Party Voting Game",
+    description:
+      "Create a party, add your friends, and let the crowd decide who's had one too many!",
+    url: "/",
+    siteName: "Are They Drunk?",
+    images: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/og.png",
+        width: 1200,
+        height: 630,
       },
     ],
-    apple: "/apple-icon.png",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Are They Drunk? | The Ultimate Party Voting Game",
+    description:
+      "Create a party, add your friends, and let the crowd decide who's had one too many!",
+    images: [
+      {
+        url: "/twitter.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 }
 
